@@ -17,6 +17,19 @@
 #ifndef _HAVE_WIKI_TEXT_HEADER
 #define _HAVE_WIKI_TEXT_HEADER
 
+#define WIKIHEADER  \
+                    \
+"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" \
+"<html xmlns='http://www.w3.org/1999/xhtml'>\n"  \
+"<head>\n" \
+"<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />\n"  \
+"<link rel='SHORTCUT ICON' href='favicon.ico' />\n"  \
+"<link media='all' href='styles.css' rel='STYLESHEET' type='text/css' />\n"  \
+"<title>%s</title>\n"  \
+"<style type=\"text/css\">%s</style>"  \
+"</head>\n"  \
+"<body>\n"
+
 #define EDITHEADER                                                       \
                                                                          \
 "<div id='header'>\n"                                                    \
@@ -90,7 +103,7 @@
 "<td align='left'><input type='text' name='username' /></td>\n"         \
 "</tr><tr>\n"                                                           \
 "<td align='right'>Password:</td>"                                       \
-"<td align='left'><input type='text' name='password' /></td>\n"        \
+"<td align='left'><input type='password' name='password' /></td>\n"        \
 "</tr><tr>\n"                                                           \
 "<td></td><td align='left'><input type='submit' value='Login' /></td>\n" \
 "</tr></table>\n"                                                      \
@@ -108,7 +121,7 @@
 "<td align='left'><input type='text' name='username' /></td>\n"         \
 "</tr><tr>\n"                                                           \
 "<td align='right'>Password:</td>"                                       \
-"<td align='left'><input type='text' name='password' /></td>\n"        \
+"<td align='left'><input type='password' name='password' /></td>\n"        \
 "</tr><tr>\n"                                                           \
 "<td align='right'>Your Email:</td>"                                     \
 "<td align='left'><input type='text' name='email' /></td>\n"  \
@@ -131,13 +144,13 @@
 "<table border='0' width='100%%'>\n"                                    \
 "<tr>\n"                                                                \
 "<td align='right'>Old password:</td>"                                  \
-"<td align='left'><input type='text' name='password' /></td>\n"         \
+"<td align='left'><input type='password' name='password' /></td>\n"         \
 "</tr><tr>\n"                                                           \
 "<td align='right'>New password:</td>"                                  \
-"<td align='left'><input type='text' name='newpassword' /></td>\n"      \
+"<td align='left'><input type='password' name='newpassword' /></td>\n"      \
 "</tr><tr>\n"                                                           \
 "<td align='right'>Reenter your password:</td>"                         \
-"<td align='left'><input type='text' name='newpasswordbis' /></td>\n"   \
+"<td align='left'><input type='password' name='newpasswordbis' /></td>\n"   \
 "</tr><tr>\n"                                                           \
 "</tr><tr>\n"                                                           \
 "<td></td><td align='left'><input type='submit' value='Login' /></td>\n"\
@@ -158,13 +171,13 @@
 "<td></td><td align='left'><input type='submit' name='logoff' value='Log Off' /></td>\n"\
 "</tr><td span=2><br>Change your password:<br></td><tr>\n"             \
 "<td align='right'>Old password:</td>"                                  \
-"<td align='left'><input type='text' name='password' /></td>\n"         \
+"<td align='left'><input type='password' name='password' /></td>\n"         \
 "</tr><tr>\n"                                                           \
 "<td align='right'>New password:</td>"                                  \
-"<td align='left'><input type='text' name='newpassword' /></td>\n"      \
+"<td align='left'><input type='password' name='newpassword' /></td>\n"      \
 "</tr><tr>\n"                                                           \
 "<td align='right'>Reenter your password:</td>"                         \
-"<td align='left'><input type='text' name='newpasswordbis' /></td>\n"   \
+"<td align='left'><input type='password' name='newpasswordbis' /></td>\n"   \
 "</tr><tr>\n"                                                           \
 "<td></td><td align='left'><input type='submit' name='chgpwd' value='Change Password' /></td>\n"\
 "</tr><tr>\n"                                                           \

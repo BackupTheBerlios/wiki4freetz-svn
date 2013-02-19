@@ -24,7 +24,7 @@ int
 main(int argc, char **argv)
 {
   HttpRequest    *req  = NULL;
-  int             port = 8000;
+  int             port = 8001;
   int             c;
   char           *didiwiki_home = NULL;
   int             restore_WikiHelp = 0;
@@ -77,7 +77,7 @@ main(int argc, char **argv)
       case 'v':
         printf("CiWiki alias DidiWiki - version %s\n\n",VERSION);
         return 0;         
-      case 'p': //default port is 8000
+      case 'p': //default port is 8001
         port = atoi(optarg);
         break;      
       case 'h': //default home directory is ~/.didiwiki

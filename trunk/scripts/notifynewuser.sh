@@ -6,25 +6,30 @@
 # The result file newusersnotified.txt is updated
 # JP Redonnet May 2010 - inphilly@gmail.com
 # Rev 1.1 August 2010
+
 # newwikiusers.txt should be in the home dir
-file1=~/newwikiusers.txt
+file1=newuser/newwikiusers.txt
+
 # temporary file
-file2=~/newwikiusers.temp
+file2=newuser/newwikiusers.temp
+
 # list of users notified
-file3=~/newusersnotified.txt
+file3=newuser/newusersnotified.txt
+
 #wiki address, we need the ip address and the port 
 #we will create a direct link to validate a new registration
-str=`ifconfig`
-str=${str#*inet adr:}
-wikiaddr='http://'${str%% *}':7000'
+wikiaddr="http://$(hostname):8001"
+
 # Subject, body
-subject='Your CiWiki Access Code\r'
-body='Hello\r\rTo validate your new account;
-      Please click on the direct link below,
-      or in the Wiki, click on login, choose new account,
-      Reenter your username, password, and email,
-      Enter your access code.\r'
-thanks='\rThank you!\r'
+subject='Your CiWiki Access Code\n'
+body='
+    Hello\n
+    To validate your new account;
+    Please click on the direct link below,
+    or in the Wiki, click on login, choose new account,
+    Reenter your username, password, and email,
+    Enter your access code.\n'
+thanks='\nThank you!\n'
 
 if [ -f "$file1" ]
 then
@@ -42,13 +47,15 @@ then
 
     date >> $file3
     echo "$line" >> $file3
-    echo "Subject:$subject\r \
-    $body\r \
-    Your username:$usr\r \
-    Your password:$pwd\r \
-    Your access code:$code\r \
-    Direct link: $direct\r \
-    $thanks\r"|sendmail $email >> $file3
+
+    # Sendmail
+    echo "Subject: $subject\n
+    $body
+    Your username: $usr
+    Your password: $pwd
+    Your access code: $code
+    Direct link: $direct
+    $thanks"|sendmail $email >> $file3
   done < $file2
 fi
 exit 0

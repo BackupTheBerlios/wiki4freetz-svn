@@ -1,3 +1,9 @@
+2013-02-05	Torsten Herrmann <thpost@gmx.net>
+  * Changed: default port to 8001 to run it in parallel with original didiwiki
+  * Fixed: hidden password input 
+  * Changed: use explicit folders for new users, templates and scripts
+  * Changed: reduced required length for user name and password to 4
+
 2010-08-09    Jean-Pierre Redonnet <inphilly@gmail.com>
   * Fixed finish_install.sh  The folder /.didiwiki is created if it doesn't exist.
   * pack renamed 1.7.0.1

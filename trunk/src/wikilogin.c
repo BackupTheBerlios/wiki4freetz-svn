@@ -32,7 +32,7 @@
  *   create .unwanted.txt in .didiwiki folder
  *   and add line with ip address to reject.
  * 
- * The file ~/newwikiusers.txt contains the new users, 
+ * The file ./newuser/newwikiusers.txt contains the new users, 
  * the code after C: and the user name after U:
  * must be sent by email, with sendmail and little bash script.
  * 
@@ -285,7 +285,7 @@ wikilogin_isvalid(char *username, char *password,
     else newac=0;
   
   /* too short */
-  if (lgusr < 8 || lgpwd < 8)
+  if (lgusr < 4 || lgpwd < 4)
     return -1;
   /* too long */
   if (lgusr > 24 || lgpwd > 24)
@@ -364,8 +364,8 @@ wikilogin_isvalid(char *username, char *password,
   sprintf(codeok,"%llx",hash(username)); //access code with username
   if ( code && strcmp(code,codeok) != 0 )
   {
-    /* new registrations are in ~/newwikiusers.txt */
-    snprintf(newusersfile, 512, "%s/newwikiusers.txt", getenv("HOME"));
+    /* new registrations are in ./newuser/newwikiusers.txt */
+    snprintf(newusersfile, 512, "%s/newwikiusers.txt", NEWUSERFOLDER);
     if ( !(fp = fopen(newusersfile, "a")) )
       return -100; //check write permission!
     fprintf(fp, "U:%s P:%s M:%s I:%s T:%li C:%s\n",
@@ -376,7 +376,7 @@ wikilogin_isvalid(char *username, char *password,
     if ( dosendmail )
     /* call sh script to send email */
     {
-      snprintf(sendmailcmd, 512, "%s%s", getenv("HOME"),SCRIPTMAIL);
+      snprintf(sendmailcmd, 512, "%s", SCRIPTMAIL);
       /* Attempt to fork and check for errors */
       pid_t pid = fork();
       switch( pid )

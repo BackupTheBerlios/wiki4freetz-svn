@@ -84,12 +84,16 @@
 #define TRUE  1
 #define FALSE 0
 
-#define DISCONNECT 30 //min. change disconnect ip here
-#define SCRIPTMAIL "/scripts/notifynewuser.sh" //path script sendmail
 
 #define PICSFOLDER "images"
 #define FILESFOLDER "files"
 #define ACCESSFOLDER "permission"
+#define NEWUSERFOLDER "newuser"
+#define SCRIPTFOLDER "scripts"
+#define TEMPLATESFOLDER "templates"
+
+#define DISCONNECT 30 //min. change disconnect ip here
+#define SCRIPTMAIL SCRIPTFOLDER"/notifynewuser.sh" //path script sendmail
 
 #include "util.h"
 #include "http.h"
