@@ -14,28 +14,30 @@ usage () {
 	cat <<-EOF
 	Usage: $(basename $0) [-s] [-d <targetDir>]
 	Installation of additional files and folders for CiWiki.
-    
-	Optional arguments:
-	    -s        silent mode, no user interaction
-	    -d <dir>  target directory path
+	    -s        silent mode, no user interaction (optional)
+	    -d <dir>  target directory path (optional)
 EOF
 	exit 1
 }
 
-# get command line options
-set -- $(getopt "shd:" "$@")
+if [ -n "$1" ]
+then
+	echo "Parsing command line options ..."
+	# get command line options
+	set -- $(getopt "-shd1:" "$@")
 
-# handle command line options
-while :
-do
-	case "$1" in 
-		-s) silent=1 ;;
-		-d) shift; datadir=$1 ;;
-		-h) usage ;;
-		--) break ;;
-	esac
-	shift
-done
+	# handle command line options
+	while :
+	do
+		case "$1" in 
+			-s) silent=1 ;;
+			-d) shift; datadir=$1 ;;
+			-h) usage ;;
+			--) break ;;
+		esac
+		shift
+	done
+fi
 
 # check user's yes/ no answer
 yesno () {
@@ -58,9 +60,12 @@ interactive() {
 	cat <<-EOF
 	------------------------------------------------
 	Installation of extra CiWiki files
-    ------------------------------------------------
+	------------------------------------------------
 	
 EOF
+	if ! yesno "Do you like to proceed?"; then
+		exit 0
+	fi
 
 	if ! [ -d "src" ]; then 
 	  echo "Please run this script from ciwiki-xxx directory."
@@ -79,7 +84,9 @@ EOF
 	done
 }
 
-if [ $silent=1 ]; then
+echo "Debug: silent=$1"
+
+if [ $silent ]; then
 	if [ -z $datadir ]; then
 		echo
 		echo "Missing option -d <directory>!"
