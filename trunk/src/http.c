@@ -546,7 +546,7 @@ http_response_send_bigfile
 void  
 sigint(int sig)
 {
-  printf("\nDidiwiki stopped.\n");
+  printf("\nWiki4Freetz stopped.\n");
   syslog(LOG_LOCAL0|LOG_INFO, "Didiwiki stopped.\n");
 
   (void)signal(SIGINT, SIG_DFL);
@@ -562,7 +562,7 @@ sigint(int sig)
 void
 sigterm(int sig)
 {
-  printf("\nDidiwiki stopped.\n");
+  printf("\nWiki4Freetz stopped.\n");
   syslog(LOG_LOCAL0|LOG_INFO, "Didiwiki stopped.\n");
 
   (void)signal(SIGTERM, SIG_DFL);
@@ -610,7 +610,7 @@ http_server(struct in_addr address, int iPort)
   inaddr.sin_port = htons(iPort);
   listener = socket(AF_INET, SOCK_STREAM, 0);
 
-  fprintf(stderr,"DidiWiki firing up ...\n");
+  fprintf(stderr,"Wiki4Freetz firing up ...\n");
 
   if( listener < 0 )
   {
@@ -645,7 +645,7 @@ http_server(struct in_addr address, int iPort)
     exit(1);
   }
 
-  fprintf(stderr,"DidiWiki Started. Please point your browser at %s:%i\n", inet_ntoa(address), iPort);
+  fprintf(stderr,"Wiki4Freetz started. Please point your browser at %s:%i\n", inet_ntoa(address), iPort);
 
   /* log starting information */
   openlog("didiwiki", 0, 0);

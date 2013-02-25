@@ -7,10 +7,10 @@ int dosendmail; //declared external in wikilogin.c
 int
 usage()
 { 
-  fprintf(stderr, "Usage: didiwiki [options]\n");
+  fprintf(stderr, "Usage: wiki4freetz [options]\n");
   fprintf(stderr, "   -a, --autologin       : login localhost automatically\n");
   fprintf(stderr, "   -d, --debug           : debug mode, listens to requests from stdin\n");
-  fprintf(stderr, "   -h, --home   <path>   : specify didiwiki's home directory\n");
+  fprintf(stderr, "   -h, --home   <path>   : specify wiki4freetz's home directory\n");
   fprintf(stderr, "   -l, --listen <ipaddr> : specify IP address\n");
   fprintf(stderr, "   -p, --port   <port>   : specify port number \n");
   fprintf(stderr, "   -r, --restore         : restore the default WikiHelp\n");
@@ -113,6 +113,7 @@ main(int argc, char **argv)
   }
   else 
   {
+    fprintf(stderr, "Working directory is: %s\n", didiwiki_home); 
     req = http_server(address, port);    /* forks here */
   }
 

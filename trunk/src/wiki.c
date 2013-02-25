@@ -134,11 +134,12 @@ wiki_redirect(HttpResponse *res, char *location)
 void
 wiki_page_forbidden(HttpResponse *res)
 {
+    wiki_show_header(res, "Access Denied", 0, 0);
     http_response_printf(res, 
-                         "<html>\n<p>Permission denied - You need to login.</p>"
-                         "<a href='javascript:javascript:history.go(-1)'>Return to the previous page.</a>\n"
-                         "</html>\n");
+                         "<p>Permission denied - You need to login.</p>"
+                         "<a href='javascript:javascript:history.go(-1)'>Return to the previous page.</a>");
     http_response_set_status(res, 403, "Forbidden");
+    wiki_show_footer (res);
     http_response_send(res);
 
     exit(0);
@@ -832,10 +833,13 @@ wiki_handle_http_request(HttpRequest *req)
                         link=strdup("href='WikiHome'>Home Page");
                 }
                 /* Return a msg to the user */
+                /*wiki_show_header(res, msg, FALSE, 0);*/
                 http_response_printf(res, "<html><body><strong>%s</strong><br><br>"
                                      "<a %s</a>"
                                      "</body></html>\n",msg,link);
+                /*wiki_show_footer(res);*/
                 http_response_send(res);
+                
                 /* store msg in log file */
                 syslog(LOG_LOCAL0|LOG_INFO, "Login error %s from %s",
                        msg ,http_request_get_ip_src(req));
@@ -999,7 +1003,7 @@ wiki_handle_http_request(HttpRequest *req)
             /* there's no command */
         {
             if (wikitext)
-                /* page exist, so just show the page */
+                /* page exists, so just show the page */
             { 
                 /* private is used to prevent edit/delete */
                 private=wiki_show_page(res, wikitext, page, authorized);
@@ -1023,7 +1027,7 @@ wiki_handle_http_request(HttpRequest *req)
 char*
 wiki_init_template(char *filename, char *template)
 {
-    if (access(TEMPLATESFOLDER"/pageheader", R_OK) == 0)
+    if (access(filename, R_OK) == 0)
         return (char*) file_read (filename);
 
     file_write (filename, template);

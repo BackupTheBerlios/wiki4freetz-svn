@@ -32,10 +32,10 @@ am__make_dryrun = \
     esac; \
     test $$am__dry = yes; \
   }
-pkgdatadir = $(datadir)/didiwiki
-pkgincludedir = $(includedir)/didiwiki
-pkglibdir = $(libdir)/didiwiki
-pkglibexecdir = $(libexecdir)/didiwiki
+pkgdatadir = $(datadir)/wiki4freetz
+pkgincludedir = $(includedir)/wiki4freetz
+pkglibdir = $(libdir)/wiki4freetz
+pkglibexecdir = $(libexecdir)/wiki4freetz
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -125,18 +125,21 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/the/Projects/wiki4freetz/missing --run aclocal-1.11
 ALLOCA = 
 AMTAR = $${TAR-tar}
-AUTOCONF = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/the/Projects/wiki4freetz/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/the/Projects/wiki4freetz/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/the/Projects/wiki4freetz/missing --run automake-1.11
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPP = gcc -E
 CPPFLAGS = 
+CXX = g++
+CXXDEPMODE = depmode=gcc3
+CXXFLAGS = -g -O2
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -145,7 +148,6 @@ ECHO_N = -n
 ECHO_T = 
 EGREP = /bin/grep -E
 EXEEXT = 
-GCC_FLAGS = -g -Wall -fno-strict-aliasing
 GREP = /bin/grep
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
@@ -156,26 +158,27 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/the/Projects/wiki4freetz/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
-PACKAGE = didiwiki
-PACKAGE_BUGREPORT = texlexan@gmail.com
-PACKAGE_NAME = didiwiki
-PACKAGE_STRING = didiwiki 1.7.0
-PACKAGE_TARNAME = didiwiki
+PACKAGE = wiki4freetz
+PACKAGE_BUGREPORT = thpost@gmx.net
+PACKAGE_NAME = wiki4freetz
+PACKAGE_STRING = wiki4freetz 1.7.1
+PACKAGE_TARNAME = wiki4freetz
 PACKAGE_URL = 
-PACKAGE_VERSION = 1.7.0
+PACKAGE_VERSION = 1.7.1
 PATH_SEPARATOR = :
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 1.7.0
-abs_builddir = /home/the/Projects/ciwiki-1.7.0.1
-abs_srcdir = /home/the/Projects/ciwiki-1.7.0.1
-abs_top_builddir = /home/the/Projects/ciwiki-1.7.0.1
-abs_top_srcdir = /home/the/Projects/ciwiki-1.7.0.1
+VERSION = 1.7.1
+abs_builddir = /home/the/Projects/wiki4freetz
+abs_srcdir = /home/the/Projects/wiki4freetz
+abs_top_builddir = /home/the/Projects/wiki4freetz
+abs_top_srcdir = /home/the/Projects/wiki4freetz
 ac_ct_CC = gcc
+ac_ct_CXX = g++
 am__include = include
 am__leading_dot = .
 am__quote = 
@@ -193,7 +196,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/install-sh
+install_sh = ${SHELL} /home/the/Projects/wiki4freetz/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -213,8 +216,9 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-SUBDIRS = src 
-EXTRA_DIST = TODO didiwiki.1 styles.css didiwiki-16.png didiwiki.png didiwiki.conf didiwiki.html
+
+#SUBDIRS = src scripts docs files images
+SUBDIRS = src  
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -715,8 +719,9 @@ uninstall-am:
 	uninstall uninstall-am
 
 
-snapshot:
-	$(MAKE) dist distdir=$(PACKAGE)-snapshot-`date +"%Y%m%d"`
+#EXTRA_DIST = TODO didiwiki.1 styles.css didiwiki-16.png didiwiki.png didiwiki.conf didiwiki.html
+#snapshot:
+#	$(MAKE) dist distdir=$(PACKAGE)-snapshot-`date +"%Y%m%d"`
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

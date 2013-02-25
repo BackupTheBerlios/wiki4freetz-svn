@@ -15,6 +15,10 @@
 
 @SET_MAKE@
 
+#PREFIXDIR  = $(prefix)
+#PKGDATADIR = $(datadir)/matchbox
+#DATADIR    = $(datadir)
+
 VPATH = @srcdir@
 am__make_dryrun = \
   { \
@@ -49,7 +53,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = didiwiki$(EXEEXT)
+bin_PROGRAMS = wiki4freetz$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -62,11 +66,11 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_didiwiki_OBJECTS = didi.$(OBJEXT) http.$(OBJEXT) util.$(OBJEXT) \
+am_wiki4freetz_OBJECTS = didi.$(OBJEXT) http.$(OBJEXT) util.$(OBJEXT) \
 	wiki.$(OBJEXT) wikilogin.$(OBJEXT) wikichanges.$(OBJEXT) \
 	wikiashtml.$(OBJEXT) wikientries.$(OBJEXT)
-didiwiki_OBJECTS = $(am_didiwiki_OBJECTS)
-didiwiki_LDADD = $(LDADD)
+wiki4freetz_OBJECTS = $(am_wiki4freetz_OBJECTS)
+wiki4freetz_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -75,8 +79,8 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(didiwiki_SOURCES)
-DIST_SOURCES = $(didiwiki_SOURCES)
+SOURCES = $(wiki4freetz_SOURCES)
+DIST_SOURCES = $(wiki4freetz_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -97,6 +101,9 @@ CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
+CXX = @CXX@
+CXXDEPMODE = @CXXDEPMODE@
+CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
@@ -105,7 +112,6 @@ ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
-GCC_FLAGS = @GCC_FLAGS@
 GREP = @GREP@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
@@ -136,6 +142,7 @@ abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
 ac_ct_CC = @ac_ct_CC@
+ac_ct_CXX = @ac_ct_CXX@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
 am__quote = @am__quote@
@@ -173,12 +180,9 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-PREFIXDIR = $(prefix)
-PKGDATADIR = $(datadir)/matchbox
-DATADIR = $(datadir)
 AM_CFLAGS = $(GCC_FLAGS)
-INCLUDES = -DDATADIR=\"$(DATADIR)\" -DPKGDATADIR=\"$(PKGDATADIR)\" -DPREFIX=\"$(PREFIXDIR)\"
-didiwiki_SOURCES = didi.c  didi.h  http.c  http.h  \
+AM_LDFLAGS = 
+wiki4freetz_SOURCES = didi.c  didi.h  http.c  http.h  \
                    util.c  util.h  wiki.c  wiki.h  \
                    wikilogin.c  wikilogin.h  wikitext.h \
                    wikichanges.c  wikichanges.h \
@@ -259,9 +263,9 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-didiwiki$(EXEEXT): $(didiwiki_OBJECTS) $(didiwiki_DEPENDENCIES) $(EXTRA_didiwiki_DEPENDENCIES) 
-	@rm -f didiwiki$(EXEEXT)
-	$(LINK) $(didiwiki_OBJECTS) $(didiwiki_LDADD) $(LIBS)
+wiki4freetz$(EXEEXT): $(wiki4freetz_OBJECTS) $(wiki4freetz_DEPENDENCIES) $(EXTRA_wiki4freetz_DEPENDENCIES) 
+	@rm -f wiki4freetz$(EXEEXT)
+	$(LINK) $(wiki4freetz_OBJECTS) $(wiki4freetz_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)

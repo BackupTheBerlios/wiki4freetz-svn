@@ -15,6 +15,10 @@
 
 
 
+#PREFIXDIR  = $(prefix)
+#PKGDATADIR = $(datadir)/matchbox
+#DATADIR    = $(datadir)
+
 
 am__make_dryrun = \
   { \
@@ -33,10 +37,10 @@ am__make_dryrun = \
     esac; \
     test $$am__dry = yes; \
   }
-pkgdatadir = $(datadir)/didiwiki
-pkgincludedir = $(includedir)/didiwiki
-pkglibdir = $(libdir)/didiwiki
-pkglibexecdir = $(libexecdir)/didiwiki
+pkgdatadir = $(datadir)/wiki4freetz
+pkgincludedir = $(includedir)/wiki4freetz
+pkglibdir = $(libdir)/wiki4freetz
+pkglibexecdir = $(libexecdir)/wiki4freetz
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -49,7 +53,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = didiwiki$(EXEEXT)
+bin_PROGRAMS = wiki4freetz$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -62,11 +66,11 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_didiwiki_OBJECTS = didi.$(OBJEXT) http.$(OBJEXT) util.$(OBJEXT) \
+am_wiki4freetz_OBJECTS = didi.$(OBJEXT) http.$(OBJEXT) util.$(OBJEXT) \
 	wiki.$(OBJEXT) wikilogin.$(OBJEXT) wikichanges.$(OBJEXT) \
 	wikiashtml.$(OBJEXT) wikientries.$(OBJEXT)
-didiwiki_OBJECTS = $(am_didiwiki_OBJECTS)
-didiwiki_LDADD = $(LDADD)
+wiki4freetz_OBJECTS = $(am_wiki4freetz_OBJECTS)
+wiki4freetz_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -75,8 +79,8 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(didiwiki_SOURCES)
-DIST_SOURCES = $(didiwiki_SOURCES)
+SOURCES = $(wiki4freetz_SOURCES)
+DIST_SOURCES = $(wiki4freetz_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -85,18 +89,21 @@ am__can_run_installinfo = \
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/the/Projects/wiki4freetz/missing --run aclocal-1.11
 ALLOCA = 
 AMTAR = $${TAR-tar}
-AUTOCONF = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/the/Projects/wiki4freetz/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/the/Projects/wiki4freetz/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/the/Projects/wiki4freetz/missing --run automake-1.11
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPP = gcc -E
 CPPFLAGS = 
+CXX = g++
+CXXDEPMODE = depmode=gcc3
+CXXFLAGS = -g -O2
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -105,7 +112,6 @@ ECHO_N = -n
 ECHO_T = 
 EGREP = /bin/grep -E
 EXEEXT = 
-GCC_FLAGS = -g -Wall -fno-strict-aliasing
 GREP = /bin/grep
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
@@ -116,26 +122,27 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/the/Projects/wiki4freetz/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
-PACKAGE = didiwiki
-PACKAGE_BUGREPORT = texlexan@gmail.com
-PACKAGE_NAME = didiwiki
-PACKAGE_STRING = didiwiki 1.7.0
-PACKAGE_TARNAME = didiwiki
+PACKAGE = wiki4freetz
+PACKAGE_BUGREPORT = thpost@gmx.net
+PACKAGE_NAME = wiki4freetz
+PACKAGE_STRING = wiki4freetz 1.7.1
+PACKAGE_TARNAME = wiki4freetz
 PACKAGE_URL = 
-PACKAGE_VERSION = 1.7.0
+PACKAGE_VERSION = 1.7.1
 PATH_SEPARATOR = :
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 1.7.0
-abs_builddir = /home/the/Projects/ciwiki-1.7.0.1/src
-abs_srcdir = /home/the/Projects/ciwiki-1.7.0.1/src
-abs_top_builddir = /home/the/Projects/ciwiki-1.7.0.1
-abs_top_srcdir = /home/the/Projects/ciwiki-1.7.0.1
+VERSION = 1.7.1
+abs_builddir = /home/the/Projects/wiki4freetz/src
+abs_srcdir = /home/the/Projects/wiki4freetz/src
+abs_top_builddir = /home/the/Projects/wiki4freetz
+abs_top_srcdir = /home/the/Projects/wiki4freetz
 ac_ct_CC = gcc
+ac_ct_CXX = g++
 am__include = include
 am__leading_dot = .
 am__quote = 
@@ -153,7 +160,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/the/Projects/ciwiki-1.7.0.1/install-sh
+install_sh = ${SHELL} /home/the/Projects/wiki4freetz/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -173,12 +180,9 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-PREFIXDIR = $(prefix)
-PKGDATADIR = $(datadir)/matchbox
-DATADIR = $(datadir)
 AM_CFLAGS = $(GCC_FLAGS)
-INCLUDES = -DDATADIR=\"$(DATADIR)\" -DPKGDATADIR=\"$(PKGDATADIR)\" -DPREFIX=\"$(PREFIXDIR)\"
-didiwiki_SOURCES = didi.c  didi.h  http.c  http.h  \
+AM_LDFLAGS = 
+wiki4freetz_SOURCES = didi.c  didi.h  http.c  http.h  \
                    util.c  util.h  wiki.c  wiki.h  \
                    wikilogin.c  wikilogin.h  wikitext.h \
                    wikichanges.c  wikichanges.h \
@@ -259,9 +263,9 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-didiwiki$(EXEEXT): $(didiwiki_OBJECTS) $(didiwiki_DEPENDENCIES) $(EXTRA_didiwiki_DEPENDENCIES) 
-	@rm -f didiwiki$(EXEEXT)
-	$(LINK) $(didiwiki_OBJECTS) $(didiwiki_LDADD) $(LIBS)
+wiki4freetz$(EXEEXT): $(wiki4freetz_OBJECTS) $(wiki4freetz_DEPENDENCIES) $(EXTRA_wiki4freetz_DEPENDENCIES) 
+	@rm -f wiki4freetz$(EXEEXT)
+	$(LINK) $(wiki4freetz_OBJECTS) $(wiki4freetz_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
