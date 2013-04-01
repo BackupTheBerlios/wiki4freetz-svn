@@ -1,18 +1,40 @@
-#PREFIXDIR  = $(prefix)
-#PKGDATADIR = $(datadir)/matchbox
-#DATADIR    = $(datadir)
+NULL = 
 
+AM_CPPFLAGS = \
+	$(GENIEWIKI_CFLAGS) \
+	-include $(CONFIG_HEADER) \
+	$(NULL)
 
-AM_CFLAGS = $(GCC_FLAGS)
-AM_LDFLAGS =
-#INCLUDES = -DDATADIR=\"$(DATADIR)\" -DPKGDATADIR=\"$(PKGDATADIR)\" -DPREFIX=\"$(PREFIXDIR)\"
+bin_PROGRAMS = geniewiki 
 
-bin_PROGRAMS = wiki4freetz
+BUILT_SOURCES = geniewiki.vala.stamp
 
-wiki4freetz_SOURCES = didi.c  didi.h  http.c  http.h  \
-                   util.c  util.h  wiki.c  wiki.h  \
-                   wikilogin.c  wikilogin.h  wikitext.h \
-                   wikichanges.c  wikichanges.h \
-                   wikiashtml.c  wikiashtml.h \
-                   wikientries.c  wikientries.h
+geniewiki_VALASOURCES = \
+	wiki.gs \
+	wikifile.gs \
+	wikihandler.gs \
+	wikitext.gs \
+	$(NULL)
+
+geniewiki_SOURCES = \
+	$(geniewiki_VALASOURCES:.gs=.c) \
+	$(NULL)
+
+#geniewiki_VALAFLAGS = --pkg gio-2.0
+
+geniewiki.vala.stamp: $(geniewiki_VALASOURCES)
+	$(VALAC) $(geniewiki_VALAFLAGS) -C $^
+	touch $@
+
+geniewiki_LDADD = \
+	$(GENIEWIKI_LIBS) \
+	$(NULL)
+
+EXTRA_DIST = \
+	$(geniewiki_VALASOURCES) \
+	geniewiki.vala.stamp \
+	$(NULL)
+
+DISTCLEANFILES = \
+	$(NULL)
 

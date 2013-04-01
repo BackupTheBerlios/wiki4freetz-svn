@@ -1,0 +1,12 @@
+
+<!-- HOMETEXT -->
+[images/ciwiki.png] 
+==Welcome to !CiWiki alias !DidiWiki 
+/!CiWiki / is a fork of /!DidiWiki / with several new features added. 
+CiWiki is a small and simple [http://en.wikipedia.org/wiki/Wiki WikiWikiWeb] implementation 
+Ideal for personal note-taking, to do lists, and any other uses you can think of. 
+CiWiki is fast and does not require webserver, database mng and php interpreter. 
+For an example of how a !CiWiki entry looks in text form you can [?edit edit] this page. Also see WikiHelp for infomation on usage and formatting rules. Use The WikiSandbox to experiment. 
+The zipped homepage is here: [files/index.zip] 
+/!CiWiki / is written by [mailto://inphilly@gmail.com Jean-Pierre Redonnet] and released under [http://www.gnu.org GNU] [http://www.gnu.org/copyleft/gpl.html GPL].  
+Matthew Allum is the original author of /!DidiWiki (2004)
