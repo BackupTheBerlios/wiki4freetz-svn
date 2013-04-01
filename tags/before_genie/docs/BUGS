@@ -1,0 +1,3 @@
+Chrome & Chromium do not display the ciwiki pages correctly. It seems that 
+the styles.css file is not loaded.
+FIXED: styles.css content will be included into response
