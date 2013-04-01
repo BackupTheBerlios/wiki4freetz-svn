@@ -1,0 +1,20 @@
+This is a [http] link.
+
+=Heading-1
+
+some text
+
+== Heading-2 ===
+
+# numbered 1
+# numbered 2
+
+
+Bullet list:
+* first entry
+* second entry
+
+[[Standard link]] and [[pipe link|with a pipe]]
+
+
+'''Bold text''' or ''italic text'', even have '''''fively quoted'''''

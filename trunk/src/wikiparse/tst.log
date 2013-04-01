@@ -1,0 +1,18 @@
+-XML document: GenieTest
++Root node: article
+  +paragraph: =Heading-1
+  +paragraph: some text
+  +paragraph: ==Heading-2
+  +list: numbered 1numbered 2
+  |type: numbered
+    +listitem: numbered 2
+  +paragraph: Bullet list:
+  +list: first entrysecond entry
+  |type: bullet
+    +listitem: second entry
+  +paragraph: Standard link and pipe linkwith a pipe
+    +link: pipe linkwith a pipe
+      +linkoption: with a pipe
+  +paragraph: Bold text or italic text, even have fively quoted
+    +italics: italic text
+    +italics: fively quoted
