@@ -10,13 +10,36 @@
 
 namespace WikiText
 
+	/* use xdd -i favicon.ico to generate */
+	const FaviconData : array of uchar = {
+	  0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x10, 0x10, 0x02, 0x00, 0x00, 0x00,
+	  0x00, 0x00, 0xb0, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0x28, 0x00,
+	  0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x01, 0x00,
+	  0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00,
+	  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00,
+	  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xee, 0x00, 0xff, 0xff,
+	  0x00, 0x00, 0xff, 0xff, 0x00, 0x00, 0xba, 0xab, 0x00, 0x00, 0x92, 0xab,
+	  0x00, 0x00, 0xaa, 0x9b, 0x00, 0x00, 0xbb, 0xaf, 0x00, 0x00, 0xba, 0xab,
+	  0x00, 0x00, 0xff, 0xff, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00, 0x8d, 0x1b,
+	  0x00, 0x00, 0xb5, 0x6b, 0x00, 0x00, 0xb5, 0x6b, 0x00, 0x00, 0xb7, 0x6f,
+	  0x00, 0x00, 0x8d, 0x1b, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00, 0xff, 0xff,
+	  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	  0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	}
+
+	const FaviconDataLen : uint  = 198
+
 	const WIKIHEADER : string =  """
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- WIKIEHEADER -->
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<link rel="SHORTCUT ICON" href="favicon.ico" /> 
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/> 
 <link media="all" href="styles.css" rel="STYLESHEET" type="text/css" /> 
 <title>%s</title> 
 </head> 
@@ -31,8 +54,8 @@ namespace WikiText
 <table border="0" width="100%%"> 
 <tr> 
 <td align="left" ><strong>%s</strong> 
- ( <a href=%s?Edit title="Edit this wiki page contents. [alt-j]" accesskey="j">Edit</a> |  
-<a href=%s?Delete title="Delete page. [alt-d]" accesskey="d">Delete</a> ) </td> 
+ ( <a href="%s?Edit" title="Edit this wiki page contents. [alt-j]" accesskey="j">Edit</a> |  
+<a href="%s?Delete" title="Delete page. [alt-d]" accesskey="d">Delete</a> ) </td> 
 <td align="right" > 
 <a href="WikiHome" title="Visit Wiki home page. [alt-z]" accesskey="z">Home</a> | 
 <a href="Index" title="List all pages in the wiki. [alt-i]" accesskey="i" >Index</a> | 
@@ -183,7 +206,7 @@ You will receive your validation code on your email</p>
  
 	const CREATEFORM : string = """
 <!-- CREATEFORM -->
-<form method=POST action="Create"> 
+<form method="POST" action="Create"> 
 <input type="text" name="title" /> 
 <p><input type="submit" value="Create" /></p> 
 </form> 
@@ -191,11 +214,11 @@ You will receive your validation code on your email</p>
  
 	const EDITFORM : string = """
 <!-- EDIT FORM -->
-<form method=POST action="%s?Edit" name="editform"> 
+<form method="POST" action="%s?Edit" name="editform"> 
 <textarea name="wikitext" rows="20" cols="80" wrap="virtual">%s</textarea> 
-<p><input type="submit" name="save" value="Save" title="[alt-k]" accesskey="k"> 
-<input type="submit" name="preview" value="Preview" title="[alt-p]" accesskey="p"> 
-<input type="submit" name="cancel" value="Cancel" title="[alt-c]" accesskey="c"></p> 
+<p><input type="submit" name="save" value="Save" title="[alt-k]" accesskey="k"/> 
+<input type="submit" name="preview" value="Preview" title="[alt-p]" accesskey="p"/> 
+<input type="submit" name="cancel" value="Cancel" title="[alt-c]" accesskey="c"/></p> 
 </form> 
 <script language="JavaScript"> 
 <!-- 
@@ -228,167 +251,20 @@ Are you really sure you want to delete the page <strong>%s</strong>?
 GenieWiki is a small and simple [http://en.wikipedia.org/wiki/Wiki WikiWikiWeb] implementation.
 The implementation was inspired by ''DidiWiki''.
 GenieWiki is fast and does not require webserver, database mng and php interpreter. 
-For an example of how a !GenieWiki entry looks in text form you can [?Edit edit] this page. Also see WikiHelp for infomation on usage and formatting rules. Use The WikiSandbox to experiment. 
-/!GenieWiki / is written by [mailto://thpost@gmx.net Torsten Herrmann] in 2013 and released under [http://www.gnu.org GNU] [http://www.gnu.org/copyleft/gpl.html GPL].  
+For an example of how a !GenieWiki entry looks in text form you can [?Edit edit] this page. 
+Also see WikiHelp for infomation on usage and formatting rules. Use The WikiSandbox to experiment. 
+/!GenieWiki / is written by [mailto://thpost@gmx.net Torsten Herrmann] in 2013 and released under 
+[http://www.gnu.org GNU] [http://www.gnu.org/copyleft/gpl.html GPL].  
 Matthew Allum is the original author of ''!DidiWiki'' (2004)
 """
- 
-	const HELPTEXT  : string =  """
-=Quick Guide
-Top toolbar usage
-* [?edit Edit] Allows you to edit pages ( see below for rules )
-* [?delete Delete] Allows you to delete pages
-* [WikiHome Home] Takes you to the wiki front page
-* [Index Index] List all the pages in the wiki
-* [Changes Changes] Lists the pages changed by date
-* [Create New] Creates a new wiki page by title
-* [WikiHelp Help] Takes you to this help page
-Use the text entry box to perform a very simple keyword search on the
-Wiki contents. Hit return to activate the search.
-Use the WikiSandbox to practice formatting.
-----
-=Formatting rules
-=Top Level Heading
-  =Top Level Heading (H1)
-==Second Level Heading
-  ==Second Level Heading (H2)
-More levels
-  === (H3), ==== (H4) etc
-----
-The horizontal lines in this page are made with 4 or more dashes:
- ---- Horizonal line
-----
-Paragraphs are separated by an empty line
-Like this. Another paragraph.
- Paragraphs are separated by a blank line.
- Like this. Another paragraph.
-----
-*Bold text*, /italic text/, _underscore text_ and -strikethrough-.
-  *Bold text*, /italic text/, _underscore text_ and -strikethrough-.
-/*Combination of bold and italics*/
-  /*Combination of bold and italics*/
-----
-{B}Text color{B}
- {B}Text color{B}
-(Y)Background color(Y)
- (Y)Background color(Y)
-Colors: {B}B blue{B}  {C}C cyan{C}  {G}G green{G}  {P}P pink{P}  {R}R red{R}  {Y}Y yellow{Y}
-Colors: (B)B blue(B)  (C)C cyan(C)  (G)G green(G)  (P)P pink(P)  (R)R red(R)  (Y)Y yellow(Y)
-----
-Highlight
- Highlight
------
-WikiLinks are formed by two or more words in /camelcase/.
- WikiLinks are formed by two or more words in /camelcase/.
-External links begin with http://, like http://www.freepan.org
- External links begin with http://, like http://www.freepan.org
-Forced wiki [links] are a alphanumeric string surrounded by square brackets.
- Forced wiki [links] are a alphanumeric string surrounded by square brackets.
-Named http links have text with an !http:// link inside, like [http://www.freepan.org FreePAN]
- Named http links have text with an !http:// link inside, like [http://www.freepan.org FreePAN]
-Sometimes !WordsShouldNotMakeAWikiLink so put a "! " beforehand.
- Sometimes !WordsShouldNotMakeAWikiLink so put a "! " beforehand.
-Same thing with !http://foobar.com
- Same thing with !http://foobar.com
-Open external links in new tags:
- {{wwwlink=new_tag}} opens external link in a new tag
- {{wwwlink=current_tag}} opens external link in a current tag
-----
-Links to images display the image:
- Pictures size and border: {{width=100 height=50 border=2}}
- Return to the default width, height and border: {{picture=default}}
-{{width=100 height=50 border=1}}
-http://www.google.com/images/logo.gif
- http://www.google.com/images/logo.gif
-Picture http links have picture with an !http:// link inside, like [http://www.google.com/images/logo.gif http://www.google.com]
- Picture http links have picture with an !http:// link inside, like [http://www.google.com/images/logo.gif http://www.google.com]
-----
- Video youtube, videomotion, veoh, vimeo, flash... embedded:
- youtube=http://www.youtube.com/v/---adress--- 
- dailymotion=http://www.dailymotion.com/swf/---adress--- 
- vimeo=http://..... veoh=http://..... flash=http://.....
- line starts with youtube... and terminate the adress with a space
-----
-Unordered lists begin with a "* ". The number of asterisks determines the level:
-* foo
-* bar
-** boom
-** bam
-* baz
-  * foo
-  * bar
-  ** boom
-  ** bam
-  * baz
-Ordered lists work the same, but use a "#"
-----
-Tables begin the line with a "|" and before every new column after.
-| row:1,col:1 | row:1,col:2
-| row:2,col:1 | row:2,col:2
- | row:1,col:1 | row:1,col:2
- | row:2,col:1 | row:2,col:2
----
-Quotation begins with "
- "I had a monumental idea this morning, but I didn't like it
-"I had a monumental idea this morning, but I didn't like it
-----
-Expand text
- {{expand}}  or  {{expand=your label here}}
- text, links, images
- {{-expand}}
-{{expand}}
-text, links: http://www.google.com
-{{-expand}}
-Imbricated
- {{expand}}
- Some text
- {{expand}}
- More text
- {{-expand}}
- {{-expand}}
-{{expand}}
-Some text
-{{expand}}
-More text
-{{-expand}}
-{{-expand}}
-----
-Collapse text, can be imbricated too.
- {{collapse}}  or  {{collapse=your label here}}
- text, links, images
- {{-collapse}}
-{{collapse}}
-text, links: http://www.google.com
-{{-collapse}}
-----
-Install:
-The file styles.css must be copied in ./didiwiki or in the home directory of didiwiki.
-----
-Simple form: ToDo list
- {{entry}} or {{entry tiny/small/medium/large/huge date}}
- !{{data}}   (remove ! before this tag)
- Entries are added in the page after the tag data
- {{delete}} deletes the selected field
- {{save}} saves the checked fields
-{{entry}}
-{{data}}
-{{delete}}{{save}}
-----
- Table of contents {{toc}} can be between collapse or expand
-{{collapse=Table of contents}}{{toc}}{{-collapse}}
-----
-<Inline> <html> <is> <escaped>.
-----
-Lines prefixed with a space are unformatted ( Like examples on this page )
-----
- There is a `keyword` in this line.
-There is a `keyword` in this line.
-----
- Define a private zone in the page with {{private}}
- Login is required to show after this tag
-{{private}}
- This text is hidded if you are not logged!
-----
+	const HELPTEXT : string = """
+<table width="100%">
+	<tr><td align="center" color="white" bgcolor="red">You are leaving your local GenieWiki below.</td></tr>
+</table>
+<iframe src="http://www.mediawiki.org/wiki/Help:Formatting" 
+	width="100%" height="800" name="WikiHelp" frameborder="0">
+	Your browser doesn't support embedded frames.<p/>
+</iframe>
 """
 
 	const STYLESHEET : string =  """
@@ -421,8 +297,8 @@ body {
 	width: 100%; 
 	text-align: center; 
 } 
-table.wikitable { background-color: #fff; border: 1px solid #aaa; } 
-table.wikitable td { background-color: #fff; border: 1px solid #aaa; } 
+table.wikitable { background-color: #f9f9f9; border: 1px solid #aaa; border-collapse: collapse; } 
+table.wikitable td { background-color: #f9f9f9; border: 1px solid #aaa; border-collapse: collapse; } 
 pre { 
 	font-family: monospace; 
 	background-color: #eee; 

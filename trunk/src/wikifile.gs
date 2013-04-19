@@ -25,15 +25,7 @@ class WikiFile : Object
 		var file = get_file()
 		stdout.printf("store_text(): %s\n", file.get_path())
 		try 
-			// delete file if exists
-			if file.query_exists() 
-				file.delete()
-			
-			var dos = new DataOutputStream (file.create (FileCreateFlags.REPLACE_DESTINATION))
-			
-			written : long = 0;
-			while written < text.data.length
-				written += dos.write (text[written:text.data.length].data);
+			FileUtils.set_contents(file.get_path(), text)
 		except e : GLib.Error
 			stderr.printf("store_text(): %s\n", e.message)
 	
@@ -76,12 +68,19 @@ class WikiFile : Object
 		
 		// get wiki text from file
 		var text = get_content()
+		isotext : string
+		try 
+			// wikiparse handles ISO-8859 encoded text
+			isotext = GLib.convert(text, text.length, "ISO-8859-15", "UTF-8")
+		except e : ConvertError
+			isotext = text
+			stderr.printf("Cannot convert to ISO-8859-15: %s\n", e.message)
 		
 		if text.length > 0
-			var xml = wikiparse_do_parse(text)
-			stdout.printf("as_html(): -------- XML --------\n%s\n", xml)
+			var xml = wikiparse_do_parse(isotext)
 			html = create_html(xml)
-			stdout.printf("as_html(): -------- HTML --------\n%s\n", html)
+			//message("-------- Text --------\n%s\n".printf(text))
+			message("-------- XML --------\n%s\n".printf(xml))
+			//message("-------- HTML --------\n%s\n".printf(html))
 		
-		stdout.printf("as_html(): page size=%l\n", html.length)
 		return html
