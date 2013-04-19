@@ -1,0 +1,5 @@
+04/19/2013:
+- Wiki4Freetz/ GenieWiki - inspired by DidiWiki now implemented using Genie programming language.
+- HTTP server depends on libsoup.
+- Nearly complete MediaWiki syntax support, because flexbisonparse is used.
+- LibXml is used to transform XML output from flexbisonparse to HTML.
