@@ -148,7 +148,7 @@ def private get_index ( do_search : bool, expr : string? ) : string
 	sb.append("<table><tr>")
 	
 	try 
-		var files = File.new_for_path(home).enumerate_children (FILE_ATTRIBUTE_STANDARD_NAME, 0)
+		var files = File.new_for_path(home).enumerate_children (FileAttribute.STANDARD_NAME, 0)
 		file_info : FileInfo
 		while (file_info = files.next_file()) is not null
 			var name = file_info.get_name()
